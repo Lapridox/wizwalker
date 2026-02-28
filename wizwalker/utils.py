@@ -18,7 +18,7 @@ from wizwalker import ExceptionalTimeout
 from wizwalker.constants import Keycode, kernel32, user32, gdi32
 
 
-DEFAULT_INSTALL = "C:/ProgramData/KingsIsle Entertainment/Wizard101"
+DEFAULT_INSTALL = "E:/Wizard101"
 
 
 async def async_sorted(iterable, /, *, key=None, reverse=False):
@@ -269,7 +269,7 @@ def start_instance():
     """
     location = get_wiz_install()
     subprocess.Popen(
-        rf"{location}\Bin\WizardGraphicalClient.exe -L login.us.wizard101.com 12000",
+        rf"{location}\Bin\WizardGraphicalClient.exe -L login-de.eu.wizard101.com 12000 -A de",
         cwd=rf"{location}\Bin",
     )
 
