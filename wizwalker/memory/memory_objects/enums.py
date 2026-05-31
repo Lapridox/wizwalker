@@ -44,6 +44,12 @@ class DelayOrder(Enum):
     second = 2
 
 
+class FusionState(Enum):
+    fs_invalid = 0
+    fs_partial = 1
+    fs_valid = 2
+
+
 class WindowStyle(IntFlag):
     has_back = 1
     scale_children = 2
@@ -239,6 +245,7 @@ class SpellEffects(Enum):
     remove_converted_over_time = 148
     modify_over_time_duration = 149
     modify_school_pips = 150
+    shadow_pact = 151
 
 
 class EffectTarget(Enum):
@@ -261,6 +268,13 @@ class EffectTarget(Enum):
     multi_target_friendly = 15
     friendly_single_not_me = 16
 
+class EffectKinds(Enum):
+    charm = 2
+    curse = 3
+    dot = 4
+    hot = 5
+    jinx = 1
+    ward = 0
 
 class ObjectType(Enum):
     undefined = 0
@@ -380,3 +394,15 @@ class MinionType(Enum):
 class StatusEffect(Enum):
     stunned = 0
     confused = 1
+
+
+class UnlockTriggerState(Enum):
+    """State of a guild unlock trigger.
+
+    Derived from MSG_UpdateGuildUnlockTrigger handler at 0x141213a10:
+    state == 2 triggers island unlock via FUN_141222630.
+    """
+
+    locked = 0
+    in_progress = 1
+    completed = 2

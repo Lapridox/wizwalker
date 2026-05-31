@@ -23,6 +23,7 @@ from .memory import (
     CurrentQuestPosition,
     CurrentRootWindow,
     CurrentGameClient,
+    CurrentSocialSystemsManager,
     DuelPhase,
     HookHandler,
     CurrentRenderContext,
@@ -73,6 +74,7 @@ class Client:
         self.root_window = CurrentRootWindow(self.hook_handler)
         self.render_context = CurrentRenderContext(self.hook_handler)
         self.game_client = CurrentGameClient(self.hook_handler)
+        self.social_systems_manager = CurrentSocialSystemsManager(self.hook_handler)
 
         self._teleport_helper = TeleportHelper(self.hook_handler)
 
@@ -706,7 +708,7 @@ class Client:
                 b"\x48\xBA" + packed_new_camera_address +  # mov rdx, new_cam_addr
                 b"\x49\xC7\xC0\x01\x00\x00\x00"  # mov r8, 0x1
                 b"\x48\x8B\x01"  # mov rax, [rcx]
-                b"\x48\x8B\x80\x68\x04\x00\x00"  # mov rax, [rax+0x460]
+                b"\x48\x8B\x80\x70\x04\x00\x00"  # mov rax, [rax+0x470]
                 b"\x49\x89\xC1"  # mov r9, rax
                 b"\xFF\xD0"  # call rax
 
